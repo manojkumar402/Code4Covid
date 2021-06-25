@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         transaction.replace(R.id.fragment_container,new NewsFragment());
                         break;
                     case 1:
-                        transaction.replace(R.id.fragment_container,new DoctorFragment() );
+                        transaction.replace(R.id.fragment_container,new FrontLineFragment() );
                         break;
                     case 2:
                         transaction.replace(R.id.fragment_container,new FourmFragment());

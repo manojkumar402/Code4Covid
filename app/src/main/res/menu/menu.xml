@@ -10,7 +10,7 @@
     <item
         android:id="@+id/doctor"
         android:icon="@drawable/doctor"
-        android:title="Doctor" />
+        android:title="FrontLine" />
 
     <item
         android:id="@+id/fourm"

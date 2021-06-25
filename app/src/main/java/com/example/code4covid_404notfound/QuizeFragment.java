@@ -7,58 +7,145 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuizeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+
 public class QuizeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public QuizeFragment() {
-        // Required empty public constructor
-    }
+//    public QuizeFragment() {
+//        // Required empty public constructor
+//    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuizeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuizeFragment newInstance(String param1, String param2) {
-        QuizeFragment fragment = new QuizeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
+    private TextView questionTV,questionNumberTV;
+    private Button option1Btn,option2Btn,option3Btn,option4Btn;
+    private ArrayList<QuizModel> quizModelArrayList;
+    Random random;
+    int currentScore = 0,questionAttempted = 1,currentPos;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quize, container, false);
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+        View v = inflater.inflate(R.layout.fragment_quize,container,false);
+        questionTV = v.findViewById(R.id.idTVQuestion);
+        questionNumberTV =v.findViewById(R.id.idTVQuestionsAttempted);
+        option1Btn = v.findViewById(R.id.idBtnOption1);
+        option2Btn = v.findViewById(R.id.idBtnOption2);
+        option3Btn = v.findViewById(R.id.idBtnOption3);
+        option4Btn = v.findViewById(R.id.idBtnOption4);
+        quizModelArrayList = new ArrayList<>();
+        random = new Random();
+        getQuestion(quizModelArrayList);
+        currentPos = random.nextInt(quizModelArrayList.size());
+        setDataToView(currentPos);
+        option1Btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (quizModelArrayList.get(currentPos).getAnswer().trim().toLowerCase().equals(option1Btn.getText().toString().trim().toLowerCase())) {
+                    currentScore++;
+                }
+                questionAttempted++;
+                currentPos = random.nextInt(quizModelArrayList.size());
+                setDataToView(currentPos);
+            }
+        });
+        option2Btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (quizModelArrayList.get(currentPos).getAnswer().trim().toLowerCase().equals(option2Btn.getText().toString().trim().toLowerCase())) {
+                    currentScore++;
+                }
+                questionAttempted++;
+                currentPos = random.nextInt(quizModelArrayList.size());
+                setDataToView(currentPos);
+            }
+        });
+        option3Btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (quizModelArrayList.get(currentPos).getAnswer().trim().toLowerCase().equals(option3Btn.getText().toString().trim().toLowerCase())) {
+                    currentScore++;
+                }
+                questionAttempted++;
+                currentPos = random.nextInt(quizModelArrayList.size());
+                setDataToView(currentPos);
+            }
+        });
+        option4Btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (quizModelArrayList.get(currentPos).getAnswer().trim().toLowerCase().equals(option4Btn.getText().toString().trim().toLowerCase())) {
+                    currentScore++;
+                }
+                questionAttempted++;
+                currentPos = random.nextInt(quizModelArrayList.size());
+                setDataToView(currentPos);
+            }
+        });
+        return v;
+    }
+
+    private void showBottomSheet(){
+        LinearLayout linearLayout = new LinearLayout(getActivity());
+
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+        View bottomSheetView;
+        bottomSheetView = LayoutInflater.from(getContext()).inflate(R.layout.score_bottom_sheet,linearLayout.findViewById(R.id.idLLScore));
+        TextView scoreTV = bottomSheetView.findViewById(R.id.idTVScore);
+        Button restartQuizeBtn = bottomSheetView.findViewById(R.id.idBtnRestart);
+        scoreTV.setText("Your Score Is \n"+currentScore+"/6");
+        restartQuizeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                questionAttempted = 0;
+                currentPos = random.nextInt(quizModelArrayList.size());
+                setDataToView(currentPos);
+                currentScore = 0;
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetDialog.setCancelable(false);
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+    private void setDataToView(int currentPos) {
+        questionNumberTV.setText("Questions Attempted: " + questionAttempted + "/6");
+        if (questionAttempted == 6) {
+            showBottomSheet();
+        } else {
+            questionTV.setText(quizModelArrayList.get(currentPos).getQuestion());
+            option1Btn.setText(quizModelArrayList.get(currentPos).getOption1());
+            option2Btn.setText(quizModelArrayList.get(currentPos).getOption2());
+            option3Btn.setText(quizModelArrayList.get(currentPos).getOption3());
+            option4Btn.setText(quizModelArrayList.get(currentPos).getOption4());
+        }
+    }
+
+    private void getQuestion(ArrayList<QuizModel> quizModelArrayList) {
+        quizModelArrayList.add(new QuizModel("How Are Your Feeling Today?","GREAT","GOOD","NOT WELL","WORST","GREAT"));
+        quizModelArrayList.add(new QuizModel("Do you Have Cold Today?","Yes","No","Mild","severe","No"));
+        quizModelArrayList.add(new QuizModel("Do you Have Cough Today?","Yes","No","Mild","severe","No"));
+        quizModelArrayList.add(new QuizModel("Do you Have Fever Today?","Yes","No","Mild","severe","No"));
+        quizModelArrayList.add(new QuizModel("Do you Have Body Pains Today?","Yes","No","Mild","severe","No"));
+        quizModelArrayList.add(new QuizModel("Do you Have Breathing problem Today?","Yes","No","Mild","severe","No"));
+
     }
 }
