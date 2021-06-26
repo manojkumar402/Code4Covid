@@ -31,9 +31,7 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
     ArrayList<News> newsArray;
     News news;
     LinearLayoutManager layoutManager;
-//    SwipeRefreshLayout swipeRefreshLayout;
-//    EditText etQuery;
-//    Button btnSearch;
+
 
 
 
@@ -43,13 +41,10 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
 
-
-//            setContentView(R.layout.activity_main);
+        openTipDialog();
         View v = inflater.inflate(R.layout.fragment_news,container,false);
         RecyclerView newsList = v.findViewById(R.id.newsList);
-//            swipeRefreshLayout = v.findViewById(R.id.swipeRefresh);
-//        etQuery = v.findViewById(R.id.etQuery);
-//        btnSearch = v.findViewById(R.id.btnSearch);
+
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         newsList.setLayoutManager(layoutManager);
@@ -67,7 +62,10 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
 
     }
 
+    private void openTipDialog() {
 
+
+    }
 
 
 //    public ArrayList<String> fetchData(){

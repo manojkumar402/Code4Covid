@@ -20,13 +20,11 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
-//        by default in home it shows fragmnet
         FragmentTransaction homeTrans = getSupportFragmentManager().beginTransaction();
         homeTrans.replace(R.id.fragment_container,new NewsFragment());
         homeTrans.commit();
 
 
-//        custom navbar-1 smooth bar
         binding.bottomNav.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public boolean onItemSelect(int i) {
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     case 4:
                         transaction.replace(R.id.fragment_container,new QuizeFragment());
                         break;
-
                 }
                 transaction.commit();
                 return false;//but in normal its true.
