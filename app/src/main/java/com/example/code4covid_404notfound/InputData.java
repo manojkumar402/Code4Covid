@@ -46,44 +46,8 @@ public class InputData extends AppCompatActivity {
                             Toast.makeText(InputData.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
-                    startActivity(new Intent(InputData.this,MainActivity.class));
                 }
             }
         });
     }
 }
-
-
-
-//updaing data
-//                HashMap<String,Object> hashMap = new HashMap<>();
-//                hashMap.put("mName",edit_name.getText().toString());
-//                hashMap.put("mAge",edit_age.getText().toString());
-//                dao.Update("-McxQW-bTdeqjxZSFnn2",hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(MainActivity.this, "Added to firebase", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-
-
-//removing data
-//                dao.remove("-McxQW-bTdeqjxZSFnn2").addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(MainActivity.this, "Data removed", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(MainActivity.this,"Data failed to remove",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });

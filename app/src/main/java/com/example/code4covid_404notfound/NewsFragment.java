@@ -1,5 +1,8 @@
 package com.example.code4covid_404notfound;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 
 public class NewsFragment extends Fragment implements NewsItemClicked{
@@ -31,7 +38,7 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
     ArrayList<News> newsArray;
     News news;
     LinearLayoutManager layoutManager;
-
+    Dialog dialog;
 
 
 
@@ -40,7 +47,7 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
-
+        dialog = new Dialog(getActivity());
         openTipDialog();
         View v = inflater.inflate(R.layout.fragment_news,container,false);
         RecyclerView newsList = v.findViewById(R.id.newsList);
@@ -48,35 +55,41 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         newsList.setLayoutManager(layoutManager);
-//            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//                @Override
-//                public void onRefresh() {
-//                    retrieveJson()
-//                }
-//            });
+
         fetchData();
         newsAdapter = new NewsAdapter(this);
         newsList.setAdapter(newsAdapter);
         return v;
-
-
     }
 
     private void openTipDialog() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Wear a mask");
+        arrayList.add("Sanitize your Hands");
+        arrayList.add("Maintain 6-feet distance");
+        arrayList.add("Stay Home Stay Safe");
+        dialog.setContentView(R.layout.tip_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ImageView imageView = dialog.findViewById(R.id.imageViewclose);
+        TextView textView = dialog.findViewById(R.id.close_text);
+        TextView tipOfday = dialog.findViewById(R.id.tipoftheday);
+        Collections.shuffle(arrayList);
+        tipOfday.setText(arrayList.get(2));
+        dialog.show();
 
-
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
-
-
-//    public ArrayList<String> fetchData(){
-//        ArrayList<String> newslist = new ArrayList<>();
-//        for(int i=0;i<100;i++){
-//            newslist.add("Item "+i);
-//        }
-//        return newslist;
-//    }
-
-
 
     private void fetchData() {
         String url = "https://saurav.tech/NewsAPI/top-headlines/category/general/in.json";
