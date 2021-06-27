@@ -14,4 +14,6 @@
     <!--    <color name="platinum">#CD7F32</color>-->
     <color name="platinum">#E5E1E6</color>
     <color name="darkGreen">#006400</color>
+    <color name="lightOrange">#FCD299</color>
+    <color name="lightGreen">#90ee90</color>
 </resources>

@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class VerifyFragment extends Fragment {
 
-
+    User user;
     Button submit;
     RadioGroup radioGroup;
     RadioButton radioButton;
@@ -43,6 +43,30 @@ public class VerifyFragment extends Fragment {
                     int radioId = radioGroup.indexOfChild(radioBtn);
                     RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
                     String selection = (String) btn.getText();
+                    if(id == 2131296758){
+                        boolean val = true;
+                        user = new User(val);
+
+//                        Toast.makeText(getActivity(), "Yes in if", Toast.LENGTH_SHORT).show();
+//                        Bundle bundle = new Bundle();
+//
+//                        bundle.putString("Key","true");
+                        FourmFragment fragment = new FourmFragment();
+                        //fragment.setArguments(bundle);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+                    }else{
+                        Toast.makeText(getActivity(), "no in if", Toast.LENGTH_SHORT).show();
+                        boolean val = true;
+                        user = new User(val);
+//                        Bundle bundle = new Bundle();
+//                        boolean val = false;
+//                        bundle.putString("Key","false");
+                        FourmFragment fragment = new FourmFragment();
+
+                       // fragment.setArguments(bundle);
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+                    }
+
                     Toast.makeText(getActivity(), selection, Toast.LENGTH_SHORT).show();
                 }
 

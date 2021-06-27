@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         FragmentTransaction homeTrans = getSupportFragmentManager().beginTransaction();
-        homeTrans.replace(R.id.fragment_container,new NewsFragment());
+        homeTrans.replace(R.id.fragment_container,new RegisterFragment());
         homeTrans.commit();
 
 

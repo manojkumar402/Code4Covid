@@ -241,7 +241,20 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
+
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/add_workers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Workers" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Give Feeback" />
 
     </GridLayout>
 

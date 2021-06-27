@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,8 +30,6 @@ public class FourmFragment extends Fragment {
     ArrayList<User> userlist;
     RVAdapter adapter;
     DAOUser dao;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,9 +62,13 @@ public class FourmFragment extends Fragment {
 
             }
         });
+
+
         return v;
     }
-//    public void setFragment(){
+
+
+    //    public void setFragment(){
 //        VerifyFragment fragment = new VerifyFragment();
 //        getActivity().getSupportFragmentManager().beginTransaction()
 //                .replace(R.id.fragment_container,fragment).commit();
