@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +39,12 @@ public class FrontLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showToast("doc clicked");
+                DoctorsFragment fragment = new DoctorsFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = manager.beginTransaction();
+                ft.addToBackStack("true");
+                ft.replace(R.id.fragment_container,fragment).commit();
+
             }
         });
         cardMed.setOnClickListener(new View.OnClickListener() {

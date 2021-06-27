@@ -27,6 +27,8 @@ public class FourmFragment extends Fragment {
     ArrayList<User> userlist;
     RVAdapter adapter;
     DAOUser dao;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
