@@ -64,7 +64,6 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
 
     private void openTipDialog() {
 
-
     }
 
 

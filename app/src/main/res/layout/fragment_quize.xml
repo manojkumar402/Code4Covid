@@ -7,6 +7,18 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:fontFamily="@font/g_bold"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="HEALTH ANALYSIS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/idTVQuestionsAttempted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
