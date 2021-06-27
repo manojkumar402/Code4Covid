@@ -109,7 +109,7 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
         });
     }
     private void fetchData() {
-        String url = "https://saurav.tech/NewsAPI/top-headlines/category/general/in.json";
+        String url = "https://saurav.tech/NewsAPI/top-headlines/category/health/in.json";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {//get data
@@ -120,7 +120,7 @@ public class NewsFragment extends Fragment implements NewsItemClicked{
                         try {
                             JSONArray newsJsonArray = response.getJSONArray("articles");//getting json array
                             newsArray = new ArrayList<News>();
-                            for(int i=0;i<newsJsonArray.length();i++){
+                            for(int i=1;i<newsJsonArray.length();i++){
                                 JSONObject newsJsonObject = newsJsonArray.getJSONObject(i);
                                 news = new News(
                                         newsJsonObject.getString("title"),

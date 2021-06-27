@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -44,6 +45,7 @@ public class FourmFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new RVAdapter(getContext());
         recyclerView.setAdapter(adapter);
+
         dao = new DAOUser();
         loadData();
 
@@ -62,6 +64,11 @@ public class FourmFragment extends Fragment {
         });
         return v;
     }
+//    public void setFragment(){
+//        VerifyFragment fragment = new VerifyFragment();
+//        getActivity().getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fragment_container,fragment).commit();
+//    }
 
     private void loadData() {
         dao.get().addValueEventListener(new ValueEventListener() {

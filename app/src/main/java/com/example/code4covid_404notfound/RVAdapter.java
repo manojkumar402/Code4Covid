@@ -1,12 +1,16 @@
 package com.example.code4covid_404notfound;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,6 +38,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
         holder.Name.setText(user.getmName());
         holder.Age.setText(user.getmAge());
         holder.Contact.setText("Contact: "+user.getmContact());
+        holder.verify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                VerifyFragment fragment = new VerifyFragment();
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,fragment)
+                        .addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
@@ -45,11 +59,15 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
         private TextView Name;
         private TextView Age;
         private TextView Contact;
+        private Button verify;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             Name = itemView.findViewById(R.id.text_name);
             Age = itemView.findViewById(R.id.text_age);
             Contact = itemView.findViewById(R.id.text_contact);
+            verify = itemView.findViewById(R.id.verify);
+
+
         }
     }
 }

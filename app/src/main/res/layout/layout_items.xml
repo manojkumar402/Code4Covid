@@ -21,23 +21,26 @@
             android:layout_height="wrap_content"
             android:text="Manoj K"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
             tools:textSize="16sp"/>
         <TextView
             android:id="@+id/text_age"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:text="This the age"
-            android:layout_marginStart="10dp"
             android:textSize="24sp"/>
         <TextView
             android:id="@+id/text_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="9734234234"
-            android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
             android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/verify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Provide Feedback" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
