@@ -47,6 +47,7 @@ public class VerifyFragment extends Fragment {
                         boolean val = true;
                         user = new User(val);
 
+
 //                        Toast.makeText(getActivity(), "Yes in if", Toast.LENGTH_SHORT).show();
 //                        Bundle bundle = new Bundle();
 //

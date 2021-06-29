@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.code4covid_404notfound.databinding.ActivityMainBinding;
 
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction homeTrans = getSupportFragmentManager().beginTransaction();
         homeTrans.replace(R.id.fragment_container,new RegisterFragment());
         homeTrans.commit();
-
 
         binding.bottomNav.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override

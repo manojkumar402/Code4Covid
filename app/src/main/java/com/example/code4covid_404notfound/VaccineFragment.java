@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class VaccineFragment extends Fragment {
     CenterAdapter centerAdapter;
     ProgressBar loadingPB;
     LinearLayoutManager layoutManager;
+    ImageView imageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +49,7 @@ public class VaccineFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_vaccine,container,false);
-
+        imageView = v.findViewById(R.id.imageView11);
         mPincode = v.findViewById(R.id.idEdtPinCode);
         mSearchBtn = v.findViewById(R.id.idBtnSearch);
         loadingPB = v.findViewById(R.id.idPBLoading);
@@ -63,7 +65,7 @@ public class VaccineFragment extends Fragment {
                 }
                 else{
                     centerModelList.clear();
-
+                    imageView.setVisibility(View.INVISIBLE);
                     final Calendar c = Calendar.getInstance();
                     int mYear = c.get(Calendar.YEAR);
                     int mMonth = c.get(Calendar.MONTH);

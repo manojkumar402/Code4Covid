@@ -22,15 +22,6 @@ import java.util.Random;
 
 
 public class QuizeFragment extends Fragment {
-
-
-
-//    public QuizeFragment() {
-//        // Required empty public constructor
-//    }
-
-
-
     private TextView questionTV,questionNumberTV;
     private Button option1Btn,option2Btn,option3Btn,option4Btn;
     private ArrayList<QuizModel> quizModelArrayList;
@@ -46,10 +37,6 @@ public class QuizeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
         View v = inflater.inflate(R.layout.fragment_quize,container,false);
         questionTV = v.findViewById(R.id.idTVQuestion);
         questionNumberTV =v.findViewById(R.id.idTVQuestionsAttempted);

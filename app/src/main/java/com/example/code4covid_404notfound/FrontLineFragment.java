@@ -25,9 +25,7 @@ public class FrontLineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_frontline, container, false);
-//        setContentView(R.layout.activity_main);
+
         View v = inflater.inflate(R.layout.fragment_frontline,container,false);
         cardDoc = v.findViewById(R.id.doctor);
         cardMed = v.findViewById(R.id.medical);
