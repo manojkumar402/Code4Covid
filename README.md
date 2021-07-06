@@ -15,6 +15,8 @@ to Covid-19 pandemic.
 - Community forum for emergencies
 - Mental Health Analysis
 
+## Abstract 
+https://drive.google.com/file/d/1oolCkloJsPJsQ1VWLhFUd3R2t-rmroJh/view?usp=sharing
 
 ## Technology Stack:
 - UI/UX : Figma
