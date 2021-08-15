@@ -11,7 +11,7 @@ to Covid-19 pandemic.
 
 - Every day tips and Latest news
 - FrontLine Health workers
-- Vaccine Availablity
+- Vaccine availability
 - Community forum for emergencies
 - Mental Health Analysis
 
